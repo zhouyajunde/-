@@ -1,0 +1,70 @@
+//
+//  01-BuDeJie.pch
+//  01-BuDeJie
+//
+//  Created by 1 on 15/12/18.
+//  Copyright © 2015年 xiaomage. All rights reserved.
+//
+
+
+/*
+    1.使用pch步骤,首先要提前编译
+ 
+    pch:注意点
+    1.项目与OC文件混编
+    __OBJC__
+ 
+ 
+ 
+ 
+ */
+
+
+// OC文件
+#ifdef __OBJC__
+
+#import "GlobeConst.h"
+#import "UIView+Frame.h"
+#import "UIImage+Image.h"
+#import "UIBarButtonItem+Item.h"
+#import "UIImageView+Header.h"
+#import "NSCalendar+Init.h"
+#import "NSDate+Interval.h"
+#import "UIView+Init.h"
+
+/* 将AFN返回的数据写成plist */
+#define BSAFNWriteToPlist(filename) [responseObject writeToFile:[NSString stringWithFormat:@"/Users/a1/Desktop/%@.plist", filename] atomically:YES];
+
+/*屏幕视频*/
+#define iPhone6 ([UIScreen mainScreen].bounds.size.height == 667)
+#define iPhone6P ([UIScreen mainScreen].bounds.size.height == 736)
+#define iPhone5 ([UIScreen mainScreen].bounds.size.height == 568)
+#define iPhone4 ([UIScreen mainScreen].bounds.size.height == 480)
+
+#define BSScreenW [UIScreen mainScreen].bounds.size.width
+#define BSScreenH [UIScreen mainScreen].bounds.size.height
+
+/*屏幕视频*/
+
+#define BSColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1];
+
+#define BSRandomColor BSColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
+
+#define BSCommonBgColor BSColor(206, 206, 206)
+
+
+// 自定义Log
+
+#ifdef DEBUG
+// 调试阶段 DEBUG
+#define BSLog(...) NSLog(__VA_ARGS__);
+
+#else
+// 发布阶段
+#define BSLog(...)
+
+#endif
+
+#define BSFunc BSLog(@"%s",__func__);
+
+#endif
